@@ -69,9 +69,9 @@ Partitioning Criteria:
 
 Problems:
 
-a. joins on tables when data and databases are split, yield bad performance . A workaround is to denormalize the data but this would mean redundancy and inconsistency.
-b. Enforcing referential integrity constraints could be hard. This would mean extra effort to clean or correct data.
-c. There might be an effort to re-balance data on different servers, which means create more db servers or split huge tables across databases again.
+* joins on tables when data and databases are split, yield bad performance . A workaround is to denormalize the data but this would mean redundancy and inconsistency.
+* Enforcing referential integrity constraints could be hard. This would mean extra effort to clean or correct data.
+* There might be an effort to re-balance data on different servers, which means create more db servers or split huge tables across databases again.
 
 ## Database Indexes
 
@@ -132,20 +132,12 @@ bloom filters
 Biggest challenges in System Design interviews: knowing where to start and knowing if all the important parts were covered. Following topics can cover important concepts:
 
 1. DNS - Domain name System is a fundamental component of internet infrastructure. It translates user-friendly domain names into IP addresses. Your computer sends a query to a recursive resolver which then searches a series of DNS servers followed by a Top-Level Domain server and ultimately the authoritative DNS server. Once the IP is located, the resolver returns it to the computer and allows it to browse to the website.
-2. Load Balancer - see section above
-3. API Gateway - this serves as a server that functions as an intermediary between external clients and internal microservices or API-based backend servers. API gateway routes incoming requests, manages authentication and authorization, limits and throttles the traffic depending on need, caches responses to avoid load on back end and reduce latency and transforms requests and responses.
-4. CDN - a content delivery network is a distributed network of servers that store and delivery static and dynamic content to client machines that are geographically closer to it. See above section for more details
-5. Proxy Servers - see section above
-6. Caching - see section above
-7. Data Partitioning - see section above
-8. Database replication - see section above
-9. Distributed Messaging Systems - they provide reliable, scalable and fault-tolerance means of exchanging messages between applications and servers
-10. Microservices - an architectural style where the application is organized as an assembly of small loosely-coupled services that communicate with each other. Primary characteristics - single responsibility, independence, decentralization, communication and fault tolerance.
-11. NoSQL dbs - see section above
-12. DB Indexes - see section above
-13. Distributed File Systems - storage systems designed to manage and grant access to files and directories across a network. Usually they are used to store files such as images, videos and other kinds of files.
-14. Notification Service - notifies users with important events about the system or anything else
-15. Full-text search - allows users to search for particular words or phrases within an app or a website. To accomplish this rapidly, an inverted index is used where words are associated with documents. Elastic search is an example.
-16. Distributed Coordination services - these systems are engineered to regulate and synchronize the actions of distributed apps. They help in maintaining consistency. These systems are very helpful in large-scale distributed systems like in microservices architecture or clustered databases. Apache Zookeeper is an example.
-17. Heartbeat - heartbeat services check the health of a machine and this helps in load balancing, repair and maintenance of the system. Usually server machines continually send heartbeat messages to a central monitoring service.
-18. Checksum - checksum is used to validate the integrity of data. this is important with a lot of data moving between numerous components over a large network. Algorithms - MD4, SHA-1, SHA-256, SHA-512 etc.
+2. API Gateway - this serves as a server that functions as an intermediary between external clients and internal microservices or API-based backend servers. API gateway routes incoming requests, manages authentication and authorization, limits and throttles the traffic depending on need, caches responses to avoid load on back end and reduce latency and transforms requests and responses.
+3. Distributed Messaging Systems - they provide reliable, scalable and fault-tolerance means of exchanging messages between applications and servers
+4. Microservices - an architectural style where the application is organized as an assembly of small loosely-coupled services that communicate with each other. Primary characteristics - single responsibility, independence, decentralization, communication and fault tolerance.
+5. Distributed File Systems - storage systems designed to manage and grant access to files and directories across a network. Usually they are used to store files such as images, videos and other kinds of files.
+6. Notification Service - notifies users with important events about the system or anything else
+7. Full-text search - allows users to search for particular words or phrases within an app or a website. To accomplish this rapidly, an inverted index is used where words are associated with documents. Elastic search is an example.
+8. Distributed Coordination services - these systems are engineered to regulate and synchronize the actions of distributed apps. They help in maintaining consistency. These systems are very helpful in large-scale distributed systems like in microservices architecture or clustered databases. Apache Zookeeper is an example.
+9. Heartbeat - heartbeat services check the health of a machine and this helps in load balancing, repair and maintenance of the system. Usually server machines continually send heartbeat messages to a central monitoring service.
+10. Checksum - checksum is used to validate the integrity of data. this is important with a lot of data moving between numerous components over a large network. Algorithms - MD4, SHA-1, SHA-256, SHA-512 etc.
