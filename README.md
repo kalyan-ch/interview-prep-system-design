@@ -18,7 +18,7 @@ A repository with all the preparation notes for system design. Course at - [Grok
 ## System Design problems outline
 
 1. __Outline use cases and constraints__ - clarify use cases and requirements with the interviewer. List functional and non-functional requirements. get back-of-the-envelope estimates for storage and network usage.
-2. __System Interface Definition__ - define what some of the APIs that are expected from the system. Helps clarify the requirements further. 
+2. __System Interface Definition__ - define what some of the APIs that are expected from the system. Helps clarify the requirements further.
 3. __Define Data Model__ - define a data model for various entities and how they interact with each other. this will help nail the flow of data in different scenarios. Also helps determine which kind of storage solutions to use.
 4. __Create a high-level design__ - create a high level design that shows interactions between critical components
 5. __Design core components__ - design what each core component should do
@@ -52,6 +52,7 @@ It is better to clarify requirements than to jump in and solve the design.
 5. Taking a passive stance - need to lead the flow of the interview  
 
 ## Common Object-Oriented Design Patterns
+
 1. Template - defines a structure for sub-classes in which steps of an algo and their order are defined. Example - inheritance in java, interfaces, sub-classes etc.
 2. Strategy - this is similar to template pattern but the algorithm is chosen at run time rather than at compile time. Example - different compression algos selected based on the type of compression
 3. Observer - in this pattern the observer objects subscribe to an observable object to be notified everytime there's any change in data. Two variants - __Push__ where the observable class pushes information to the observers and __Pull__ where the observers may pull the information from observable class. Push design puts control in observable class by making it the final controller of the information and the frequency of updates. Pull design puts control in observer classes by giving them the ability to customize aspects of information updates.
@@ -63,6 +64,3 @@ It is better to clarify requirements than to jump in and solve the design.
 9. Adapter - allows interface of an existing class to be used from another instance. Example - when dealing with third party library code we often need to convert data from the type defined in our code to the type that works with the library code.
 10. Flyweight - allows objects to be shared to reduce memory load. Example - object pools
 11. Proxy - allows an object to act like a proxy - a lightweight version of the object and can be used in times of memory crunch. Example - like using a proxy image instead of real image for its metadata
-
-
-

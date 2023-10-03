@@ -10,7 +10,6 @@ Here is a brief summary of most common system design concepts and topics.
 4. __Efficiency__ - Efficiency is the performance of a given service or system.
 5. __Manageability or Service-ability__ - This is the simplicity with which a system can be repaired or maintained. If this process is too complex or time taking, the availability of the system decreases. Ease of diagnosing, ease of making updates and ease of operation also factor into defining the Manageability of a system.
 
-
 ## Load Balancing
 
 Load balancer spreads the traffic across the cluster of servers to improve availability and performance of a system. It avoids any server to be a single point of failure and keeps availability high by spreading the traffic. It should ideally keep track of all the servers and stop sending traffic to any servers that are down for whatever reason.
@@ -62,6 +61,7 @@ In Vertical partitioning, the data is split into different servers. Like storing
 In Directory based partitioning, we have a directory server that abstract the partitioning schema away from the database and queries data based on a key-value kind of logic.
 
 Partitioning Criteria:
+
 1. Hash-based: a hash function is applied to the key attributes of data which yields a partition number. This approach is not flexible with the number of db servers changing.
 2. List: each partition is assigned a list of values.
 3. Round-robin: store data in partition `i mod n`, ith record and n partitions.
@@ -108,13 +108,24 @@ CAP Theorem states that it is impossible to achieve all three of  Consistency, A
 According to CAP theorem, any distributed system can only achieve two of the above properties - CA, AP, CP. CA is not a coherent option, as a system that is not partition-tolerant will be forced to fail on C or A properties. Therefore, a system must choose between Consistency and Availability.
 
 ## Consistent Hashing
-Consistent Hashing
+
+1. In data partitioning, it is challenging to maintain and preserve data whenever a shard of data is added or removed.
+2. A simple hashing is hard to maintain because if new servers are added or when existing ones are removed, we need to rebuild the entire hash function and server keys to evenly distribute data.
+3. Consistent hashing uses keys and server names in hash function to map data, so it is easier to maintain.
+4. A hash ring is formed with all the possible hash numbers (range) and servers and keys are hashed and placed on this ring. To map keys to servers, we go clockwise on the ring - key `k1` is mapped to the next server `s1` on the ring clockwise. So when new server is added or removed, only a few keys are remapped, thereby reducing the overhead to maintain data.
+5. This isn't perfect either - data can be imbalanced. Virtual nodes can be used to represent a server to balance the data more efficiently.
+
+Reference video - [Consistent Hashing](https://www.youtube.com/watch?v=UF9Iqmg94tk)
 
 ## Long-Polling vs WebSockets vs Server-sent Events
 
 1. HTTP Polling - client sends requests to the server frequently to check for any new messages. Server responds to one of the requests with the message information. So a lot of the requests that client sends are unnecessary. This results in sending unnecessary requests to the server and will cost in terms of bandwidth .
 2. Long Polling - a modified version of the above where instead of sending so many requests, clients sends one and the server holds on to that requests and responds once any messages are available. This means that the client has an open connection with the server at all times. So once the server responds with data, the clients sends another request to open another connection with it. This is also faulty and has latency issues just like the approach above.
 3. Web Sockets - in this approach client still maintains an open connection with the server, but it is a two-way connection. In this approach client and server both can send data to each other.
+
+## Bloom filters
+
+bloom filters
 
 ## System Design Master Template
 
