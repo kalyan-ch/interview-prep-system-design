@@ -125,7 +125,22 @@ Reference video - [Consistent Hashing](https://www.youtube.com/watch?v=UF9Iqmg94
 
 ## Bloom filters
 
-bloom filters
+1. Bloom filters are a hash table like data structure that help us find if a key is in them, but quickly.
+2. This operation is not 100% accurate as it could result in false positives i.e. the operation can say that a key exists even if it doesn't. However, it would never result in a false negative. If a key doesn't exist, it always returns that information with 100% accuracy.
+3. Bloom filters are used when accuracy isn't of high priority but speed is. For example, in NoSQL databases instead of searching millions of documents for existence of keys, using a bloom filters data structure ensure that this operation is efficiently fast.
+4. The underlying data structure consists of buckets of bits, all unset (an array works too for small use cases). Keys are put into a hash function that returns a list of bucket numbers (indices) that are set. Any function that is checking for existence of keys need to just look at set indices to verify the same.
+
+## Message Queues
+
+message queues
+
+## CDN
+
+1. CDN - content delivery network is a network of servers that are geographically distributed so that content can be served to the users from data centers that are closest to them.
+2. Data centers are called - Point of Presence (PoP) and servers in Pops are called edge servers.
+3. CDNs serve as caches that reduce workload on core servers of the company / service. They usually cache static content. They usually query the origin servers for latest updates and store the cache that is relevant to the user of that geographic location.
+4. For example, Netflix can use CDNs to serve the files for top videos of the day and this data will change with region like CDN in India will have more indian language videos whereas CDN in US will have more hollywood ones.
+5. CDN also improve performance and availability of the service since they are fundamentally distributed.
 
 ## System Design Master Template
 
