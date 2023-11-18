@@ -2,6 +2,26 @@
 
 Here is a brief summary of most common system design concepts and topics.
 
+## Contents
+
+* [Key characteristics](#key-characteristics-of-distributed-systems)
+* [Reliability](#reliability)
+* [Scalability](#scalability)
+* [Maintainability](#maintainability)
+* [Load Balancing](#load-balancing)
+* [Caching](#caching)
+* [Data Partitioning](#data-partitioning)
+* [Database Indexes](#database-indexes)
+* [Proxies](#proxies)
+* [Redundancy & Replication](#redundancy-and-replication)
+* [SQL vs NoSQL](#sql-vs-nosql)
+* [CAP Theorem](#cap-theorem)
+* [Consistent Hashing](#consistent-hashing)
+* [Long Polling vs Web sockets vs SSEs](#long-polling-vs-websockets-vs-server-sent-events)
+* [Bloom filters](#bloom-filters)
+* [Message Queues](#message-queues)
+* [CDN](#cdn)
+
 ## Key characteristics of distributed systems
 
 1. __Scalability__ - Scalability is the capability of a system to grow and manage increased demand - increased data volume, increased amount of work etc., without losing any performance. Horizontal scaling is scaling by adding more machines to the existing pool. It is easier to scale dynamically this way than vertically. Vertical scaling is scaling by adding more power (RAM, Processor etc.) to the existing pool of machines. This type of scaling is limited by individual machine capacity.
@@ -54,7 +74,7 @@ For an app to be reliable, all of these conditions should be met even when "thin
 * Software that is operable with ease will allow operations team to focus the efforts on high-value activities. Routine tasks can be made easy by doing things such as providing visibility into runtime behavior, providing automation support and integration, avoiding dependency on individual machines for decent performance, providing good documentation, self healing when appropriate etc.
 * Simplicity indicates the ability for new engineers to understand the system by removing complexity around the system. Complexity in a software project can have various symptoms - tight coupling of modules, tangled dependencies, inconsistent naming, hacks instead of design changes, adding many special cases for many issues etc. Complexity makes everything hard - budgets, scheduling, more likelyhood of bugs, maintenance cost etc.
 * Making a software system simpler doesn't mean to reduce functionality - it can mean to remove accidental functionality. [Moseley and Marks](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.93.8928) define complexity as accidental if it is not inherent to the problem that the software system solves. One tool to remove complexity is abstraction - it can hide a great deal of implementation behind simple classes. It also allows software classes and methods to be reused.
-* Finally, evolvability indicates the ease with which software system can change to fit future requirements or changes in existing requirements. Organizations use Agile methodology and patterns such as TDD, refactoring to adapt to frequent change. 
+* Finally, evolvability indicates the ease with which software system can change to fit future requirements or changes in existing requirements. Organizations use Agile methodology and patterns such as TDD, refactoring to adapt to frequent change.
 
 ## Load Balancing
 
