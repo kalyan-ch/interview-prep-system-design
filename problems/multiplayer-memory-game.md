@@ -28,10 +28,12 @@ Design a multiplayer game of [memory](https://youtu.be/oFfYmrGeTPs). Rules:
 4. system is constantly updated with players' inputs and the updates should reflect in each player's client devices. Therefore, consistency should be high.
 
 ### Constraints and Data estimation
+
 1. 1 billion active users per day = at most 500 million games per day with 2 players
 2. 5 - 10 minutes per game so around 3.5 million games at any time.
 3. Once a game is started only inputs are players flipping cards so around 3.5 million requests per second
 4. 5 GB data per day to store info about games
 
 ## High Level Design
+
 ![multiplayer-memory-game](https://i.imgur.com/yNkofyq.png)
