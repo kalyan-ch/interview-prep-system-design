@@ -5,9 +5,6 @@ Here is a brief summary of most common system design concepts and topics.
 ## Contents
 
 * [Key characteristics](#key-characteristics-of-distributed-systems)
-* [Reliability](#reliability)
-* [Scalability](#scalability)
-* [Maintainability](#maintainability)
 * [Load Balancing](#load-balancing)
 * [Caching](#caching)
 * [Data Partitioning](#data-partitioning)
@@ -29,52 +26,6 @@ Here is a brief summary of most common system design concepts and topics.
 3. __Availability__ - Availability is the time a system remains operational to perform its function in a given period. Usually measured in percentages. Reliability vs Availability - if a system is reliable it is available. However, if it is available, it is not necessarily reliable.
 4. __Efficiency__ - Efficiency is the performance of a given service or system.
 5. __Manageability or Service-ability__ - This is the simplicity with which a system can be repaired or maintained. If this process is too complex or time taking, the availability of the system decreases. Ease of diagnosing, ease of making updates and ease of operation also factor into defining the Manageability of a system.
-
-## Reliability
-
-For a software application, the expectations are:
-
-* It performs the function that the users expect.
-* It can tolerate users' mistakes or unexpected uses of it
-* Its performance is good enough under the expected load and data volume.
-* It prevents any unauthorized access and other security risks.
-
-For an app to be reliable, all of these conditions should be met even when "things go wrong" or faults.
-
-* Such apps or systems are called fault-tolerant.
-* A fault is different from failure as any component can be faulty if it deviates from its spec.
-* It will help to introduce faults deliberately as this will ensure the efficient design of a fault-tolerant system. For example, [Netflix Chaos Monkey](https://netflixtechblog.com/the-netflix-simian-army-16e57fbab116?gi=8ab06b5f6b85).
-* Sometimes, prevention of faults is better than tolerating them like in cases of security faults.
-* Hardware faults, like RAM faults, Hard Disk crashes, power outages etc., can be handled with redundancy. Hard Disks may be setup in a RAID system, systems may have mutliple power supplies or backup generators.
-* However, redundancy isn't alone enough to prevent all faults. Therefore, systems are being designed to tolerate loss of entire machines by using software tolerant mechanisms, like using entire alternate data centers or rolling upgrades.
-* Software faults, like bugs are much harder to anticipate and takes longer to fix, like [leap second bug in Linux Kernel](https://www.somebits.com/weblog/tech/bad/leap-second-2012.html) or deadlock bugs with locks on shared resources.
-* Thorough testing, process isolation, measuring and monitoring system behavior in production etc. can help fix these bugs.
-* Human errors like bad design of systems, configuration errors etc. also cause faults. They can be fixed by designing efficient systems, isolating failure parts of the system, thorough testing in all levels of the system, thorough monitoring, good management practices and training etc.
-* Reliability is very important to preserve user data as poorly managed faults may result in huge losses of revenue to a company as well.
-
-## Scalability
-
-* Scalability is the system's ability to handle increased load.
-* Load can be described with a few numbers called load parameters. This depends on the system - could be number of requests per second, number of reads to writes in database, number of simultaneous active users etc.
-* For example, for twitter distribution of followers per user might be a load parameter as this might determine the amount of writes when a user posts a tweet (twitter fan out)
-* Performance is usually a service's response time or the number of records a batch process can process per second. Percentiles are a good metric to reliably know the typical response time of a service.
-* 99th percentile metrics (meaning 1 in 10000 requests) are usually high and companies use these values to set SLAs and SLOs.
-* Distributing load across multiple machines is known as shared-nothing architecture. But maintaining so many machines might become more complex and expensive. So an appropriate architecture for your system depends on the load metrics as defined above. There is no one-size-fits-all scalable architecture.
-* For example, a system designed to handle 100k requests per second, each 1 kB in size, looks very different than one that is designed to handle 3 requests per second each 2GB is size. Architectures are built around assumptions of which operations will be commonly used and which will be rarely used.
-
-## Maintainability
-
-* Maintenance of software contributes to the majority of its cost - fixing bugs, adapting to new platforms, modifying for new use cases, adding new features etc.
-* We should design software in such a way that it will make maintenance easier. These design principles should help:
-  * operability
-  * simplicity
-  * evolvability
-* Operability indicates the ease with with the operations team can keep running the system smoothly. Automation should be created to ensure that the software system works correctly.
-* A good operations team is reponsible for - monitoring the health and quick restoration of the system, tracking down root causes for system failures or degraded performance, keeping software platforms up to date including security patches, keep track of how different systems affect each other, capacity planning, establishing good practices for deployment, config management, performing complex maintenance tasks, maintaining security of the system with different changes and preserving the knowledge of the system and operations.
-* Software that is operable with ease will allow operations team to focus the efforts on high-value activities. Routine tasks can be made easy by doing things such as providing visibility into runtime behavior, providing automation support and integration, avoiding dependency on individual machines for decent performance, providing good documentation, self healing when appropriate etc.
-* Simplicity indicates the ability for new engineers to understand the system by removing complexity around the system. Complexity in a software project can have various symptoms - tight coupling of modules, tangled dependencies, inconsistent naming, hacks instead of design changes, adding many special cases for many issues etc. Complexity makes everything hard - budgets, scheduling, more likelyhood of bugs, maintenance cost etc.
-* Making a software system simpler doesn't mean to reduce functionality - it can mean to remove accidental functionality. [Moseley and Marks](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.93.8928) define complexity as accidental if it is not inherent to the problem that the software system solves. One tool to remove complexity is abstraction - it can hide a great deal of implementation behind simple classes. It also allows software classes and methods to be reused.
-* Finally, evolvability indicates the ease with which software system can change to fit future requirements or changes in existing requirements. Organizations use Agile methodology and patterns such as TDD, refactoring to adapt to frequent change.
 
 ## Load Balancing
 
