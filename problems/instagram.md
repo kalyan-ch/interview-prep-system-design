@@ -1,6 +1,7 @@
 # Instagram
 
 ## Problem statement
+
 Design a photo-sharing site like Instagram.
 
 ## Requirements
@@ -32,9 +33,6 @@ Design a photo-sharing site like Instagram.
 5. Photo - user link table - 5 * 365 - 2 TB
 6. Follower table - 4 TB
 
-## High Level Design
-
-
 ## Data model / schema
 
 User - id, name, email, phone, dateOfBirth, createdDate, lastLogin
@@ -44,22 +42,25 @@ UserFollow - followerId, followeeId
 ## Component Design
 
 create new profile - create_profile(name, email, phone, dateOfBirth) => boolean;
+
 * takes in required data for a new profile and returns a boolean value indicating if the operation is a success
 * stores user data in user table
 * can directly write to db as this process doesn't happen too often and we can afford a slow write
 
 media upload service - upload(userId, media_bytes, lat, long) => void;
+
 * upload writes to db and storage - a slow process
 * can have dedicated servers running this service
 * can write to cache first and eventually write to db and storage if too many upload requests are being handled at the moment.
 
 timeline service - () => List of media;
+
 * fetches the latest and most popular photos / videos of the users that the current user follows.
 * can fetch the first 100 pics / videos and can fetch the next 100 as the user scrolls.
 * gets a list of users that user follows and gets top 5 media for each user.
 * a ranking algorithm can then decide which 100 of these can be returned to the caller.
 * This service can be called in background and have the results stored in a cache, so when a user opens the app, the news feed is pre-generated for them.
-* Service also needs to work with sharded data. 
+* Service also needs to work with sharded data.
 
 ## Reliability and data replication
 
